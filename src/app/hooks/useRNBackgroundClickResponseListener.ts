@@ -3,15 +3,15 @@ import { RNNotificationModule } from "@shared/notification";
 import { useEffect } from "react";
 import { UseRNHookBaseProps } from "./types";
 
-export const useRNBackgroundClick = ({
-  onNotification,
+export const useRNBackgroundClickResponseListener = ({
+  onClickResponse,
   dependencies = [],
 }: UseRNHookBaseProps<typeof parseReactNativeNotification>) => {
   useEffect(() => {
     RNNotificationModule.configure({
       onNotification: (notification) => {
         const parsedNotification = parseReactNativeNotification(notification);
-        onNotification(parsedNotification);
+        onClickResponse(parsedNotification);
       },
     });
   }, dependencies);

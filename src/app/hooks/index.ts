@@ -1,1 +1,1 @@
-export * from "./useRNBackgroundClick";
+export * from "./useRNBackgroundClickResponseListener";
