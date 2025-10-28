@@ -24,12 +24,13 @@
   "author": "cupist-terry",
   "license": "ISC",
   "dependencies": {
-    "@cupist/notification-core": "^1.0.19",
+    "@cupist/notification-core": "^1.0.20",
     "react-native-push-notification": "^8.1.1"
   },
   "peerDependencies": {
     "react": "18.2.0",
-    "react-native": "0.73.2"
+    "react-native": "0.73.2",
+    "@cupist/notification-core": "^1.0.20"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
