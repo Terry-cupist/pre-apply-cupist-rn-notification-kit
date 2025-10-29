@@ -29,8 +29,11 @@ export const useRNBackgroundClickResponseListener = (
         }
 
         if (validNotificationData.deepLink) {
-          await refreshDeepLinkApis(validNotificationData.deepLink);
+          console.log("navigateToLink start");
           navigateToLink(validNotificationData.deepLink);
+          console.log("refreshDeepLinkApis start");
+          await refreshDeepLinkApis(validNotificationData.deepLink);
+          console.log("rn background click deepLink process done");
         }
 
         onClickResponse?.(parsedNotification);
