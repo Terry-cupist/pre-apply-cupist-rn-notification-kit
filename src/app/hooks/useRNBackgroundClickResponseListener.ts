@@ -18,7 +18,7 @@ export const useRNBackgroundClickResponseListener = (
     useNotificationManage(props);
   useEffect(() => {
     RNNotificationModule.configure({
-      onNotification: (notification) => {
+      onNotification: async (notification) => {
         const parsedNotification = parseReactNativeNotification(notification);
         const validNotificationData = getValidNotificationData
           ? getValidNotificationData?.(parsedNotification)
@@ -29,7 +29,7 @@ export const useRNBackgroundClickResponseListener = (
         }
 
         if (validNotificationData.deepLink) {
-          refreshDeepLinkApis(validNotificationData.deepLink);
+          await refreshDeepLinkApis(validNotificationData.deepLink);
           navigateToLink(validNotificationData.deepLink);
         }
 
