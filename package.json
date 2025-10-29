@@ -24,7 +24,7 @@
   "author": "cupist-terry",
   "license": "ISC",
   "dependencies": {
-    "@cupist/notification-core": "^1.0.28",
+    "@cupist/notification-core": "^1.0.29",
     "react-native-push-notification": "^8.1.1"
   },
   "peerDependencies": {
