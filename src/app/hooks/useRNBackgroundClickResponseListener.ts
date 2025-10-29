@@ -14,8 +14,11 @@ export const useRNBackgroundClickResponseListener = (
     getValidNotificationData,
     dependencies = [],
   } = props ?? {};
-  const { sendNotificationUserEvent, refreshDeepLinkApis, navigateToLink } =
-    useNotificationManage(props);
+  const {
+    onLogNotificationEvent,
+    onRefreshQueriesForDeepLink,
+    onNavigateToDeepLink,
+  } = useNotificationManage(props);
   useEffect(() => {
     RNNotificationModule.configure({
       onNotification: async (notification) => {
@@ -25,15 +28,12 @@ export const useRNBackgroundClickResponseListener = (
           : parsedNotification;
 
         if (validNotificationData.type) {
-          sendNotificationUserEvent(validNotificationData.type);
+          onLogNotificationEvent(validNotificationData.type);
         }
 
         if (validNotificationData.deepLink) {
-          console.log("navigateToLink start");
-          navigateToLink(validNotificationData.deepLink);
-          console.log("refreshDeepLinkApis start");
-          await refreshDeepLinkApis(validNotificationData.deepLink);
-          console.log("rn background click deepLink process done");
+          await onRefreshQueriesForDeepLink(validNotificationData.deepLink);
+          onNavigateToDeepLink(validNotificationData.deepLink);
         }
 
         onClickResponse?.(parsedNotification);
